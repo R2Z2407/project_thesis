@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studi Kasus: Proyek Inovasi AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-overlay">
+      <div class="logo-loader">
+        <svg
+          class="logo-svg"
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M480 256c0 123.4-100.6 224-224 224S32 379.4 32 256 132.6 32 256 32s224 100.6 224 224z"
+          />
+        </svg>
+      </div>
+    </div>
+    <main>
+      <section
+        id="home"
+        style="background-image: url('assets/img/section1.png')"
+      >
+        <div class="content text-center">
+          <h1 class="reveal">
+            Studi Komparatif Algoritma Mesin Pembelajaran untuk Deteksi Anomali
+            pada Mesin Milling
+          </h1>
+          <p class="reveal">
+            Mengkaji efektivitas mesin pembelajaran yaitu random forest, extreme
+            gradient boosting, support vector machine, artificial neural network
+            terhadap anomali yang terjadi pada mesin milling
+          </p>
+          <a href="#challenge" class="btn reveal"
+            >Lihat Studi Kasus <i class="fas fa-arrow-down"></i
+          ></a>
+        </div>
+      </section>
+      <section id="challenge">
+        <div class="title reveal">
+          <h2 class="section-intro" style="text-align: center">Tantangan</h2>
+        </div>
+        <div class="content-wrapper">
+          <div class="container grid-container">
+            <div class="reveal left">
+              <div class="podium-container">
+                <div class="reveal grid2-container">
+                  <h3 class="feature-number" style="color: #c0392b">01</h3>
+                  <h3 class="section-title">
+                    Pemantauan Kondisi Mesin Milling untuk Peningkatan Efisiensi
+                  </h3>
+                </div>
+                <p class="reveal">
+                  Mesin milling, yang penting untuk produksi komponen presisi,
+                  rentan mengalami kegagalan tak terduga yang sulit dideteksi
+                  secara manual. Kegagalan ini menyebabkan biaya perbaikan,
+                  penurunan produksi, dan risiko kualitas.
+                </p>
+                <div class="reveal">
+                  <img
+                    class="fill-image"
+                    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUSEhMVFRUVFxUXFRUVFRUVFRcWFRYWFxUVFRYYHSggGBolHRUXITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy0lHx8vLS8tLS8rLS0tLS0tLy0tLS0tLS0tLy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALABHgMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAEBQIDBgEAB//EAD8QAAEDAgQEBAQCCAYBBQAAAAEAAhEDIQQFEjEiQVFhBhNxgTKRobFCwRQjUmJygtHwBxUzsuHxcyRTY5KT/8QAGgEAAgMBAQAAAAAAAAAAAAAAAQIAAwQFBv/EACoRAAICAQQBAwMEAwAAAAAAAAABAhEDBBIhMUETIlEygZFhcaHRFCPh/9oADAMBAAIRAxEAPwDJ4BkBHtCDwGyOAXEZvRCuOEpThhdOao4SlFDc+qCCxlQCMYg6CNYlYSxeXlwlKE6uFdXlCEV5dXE6FM94zpQ6nHNgPvdY+uFu/GrOKj/4mysVjWLrp8mVrgCheAXYU2NVghxtOVKnQcTpEq6kxOcvop4t+AMSNo1HwwNktkBoEu72AuvUcNUc8MDYcAQbR2MzzX1bwrlku4WjleIn3Wgz3IKFNhrOYxtR8Oe5hMOjY3+vdXe4Tg+JDLnkuNTUItJ3kbCUO7CjT3+63uc4awh1pmwmQszWpA6h0I9SqZ3ZZGqEjaKi+ne3ZNqlJvP5KkU4c7skIX4Wk0s36279Vd4ZpD9IB7qmhsPdMvC7P/UNEIhCsTg2VPMa4W1kjqD1CyONw/lvczcjaOm9/ZbZm7/43fdZDGVTUqOeNLZOmOcXEx6KvTbnkkvA2WlFGmy1zfLaGmQAB7wiCqMvw4ZTa1t7TMRM80QVzslbnRfHoreFU4K5yqckCdpKRUaRurCEk+gkF6FNcIVVkLsEjmoLCI0K5kR6psUqpNufVNHbFLaY4iggsPoopqEpIppSsJcFEheBXUoTq8uFcJRQDq4vLyZEAPGl/I7UwsPj28+5Ws8aYg/qotwAXvyWMxGJcRBAXWS5MrfBVCk2FWavb+/Rd1dleiphlAT3Wiyxmw9CstQraTse4TnAZq0btcR0ET908ewM+teEKQJAImfcGbbJtm+XiiAym1zqbxJLnSGEWDQ3kFhcgzem9zA6nW0scHANcxsxEEmVts3zcU6TQ3D1WAku+Km8uL5LpJfa5+gV/JUYbNwA0uZe/p2gLM4jDD4iOYi8H3WjzHGmpqHlviNj5YIcOY4rhZ17akmWusP2me5F1TkXJbFgWg3Mf9bIVzIJRNZ1T/2/S7efVDy8/ht62sqhiGHBJI5J54VEYhvukVNzwbhom2/RNclxRpv8x5a0Nve89hFyT0UZEEYwEy0EiXuLi0wY9fWEtweTs80SdTd4O89T1TPCVg4agZLjPz29AjmMhc555QlJRN0sMNkW+zhCiplQKz2KRKpcVcSqXqAJ4UAuGowOZFymdajSp7xUJ2AfIH8RAuewSdhuiZVeQeLoNxGZPcNNmsggMaAAARBjv3QBCkvEKlJLojk32TwTpujQlmXiLJiCtLYESJslrTcpg7ZLAeIpUyDCkiGlCUXIhpQYQgFSBVQcpNclCSJXpUZXVCHiV2VEhdCZAEPjXen/AABY2oL9F9CxeW03/ECf5nfS6V1vC1F2znj0IP3C6MNTAzvGzGFTIWod4PZyqu9wD9lUfCLuVUe7T/VXLU4/kreORngjcK2SbfL7pi3wtUj42T73Sx9U0XFr23B02PSxgrRjzQk+GJKEkbXwywgieq2viesHMaGumG/Xv3svlWW+KG0yJbUjtpP3KbYvx018RSqAc/gmOR9VrWWFdlDhKy/F17XuPfn1lLsTitIJBnrH03S6r4gDzZjh7hX4PD1Kwlo0g34iLzMGw7LPkyxStsujBg78RaYi+4P3XW1Bz5d0XV8OVB+Nn1/oojIn86g9gVkeox/Jb6cvgU46vNhuLyr8HWBu4SBHpKNqZGNtXuBf7o/CZdSYwDiJHWNJ9RF0k9VCuBo4nfJVljNTjUIi0CNrdAmUqFNgAgCAukrDknudl6VI8SqypEqBKrsJElUvVjiqnlCyEJRQKEKKYbJZkLAvFeBXHKshHCFGtS/Dm6Na5WNhRY51krniKYPeljjxFSLsjD6TkQHoOkUQ1I2EJBUmlUtKlrS7wlocrChg5Oa+cNqsDa1IOc1ultVp0vsIbr5OH1RUg0LQ5dJVepdlOmK0eK81c1LoKdMBNRK6uJgESsf4pwrNWtrxqJdqE87H81r3LPeJMp1zWETJLhEE6pJM89lo00kpcsryK0ZzAYXW4Dh/meW/VaHxHkYoNpkMYNVMOOms99yOeoWPZI8rDNY1Uw4SLExK2ni/D0AymTg2Uv1bYLXNdIix4RZdZbdrMnNmKw2BniLw0SBxHaefotjk9JrabQ1wdAAkbWk/ms1l+D1OADQWkOiTYAC5jqFqMFhxTaGgAQALCJjmY5rBrJLbSNGFOw7EmwQpKJxOwQZK56LymqbroKqrG6k0oELCV4lRClpUIRUHFW6CouplDkJQ5c8q0qbqZUDKlMnHkociaRsh3NKuoCyMuhS5i65cYFMhUvsJzD0rlHMoofKWy5w6FO20Vs9IXcLamHSh9HiK1FSik1SnxFSOIjkVUqSIbSROHoogUEHhRN4H5ak2ijhQU20UnooO4BFBTFFG+SpNoorAibwEUV59NHiioVqSb0lRNwrcFwFdxFlQHrO3ToYJ1LmpVB66HJ0yEiULmv8AoP8A7/C5XlyGzJ36h/8Af4XK3F9QkujIZSyajR3C+jf4i0CKdGeVCn9l8+yJs1W+q+n/AOJNL9XS/wDC3/au3D6GYn9SMTkbf9P+Ct/tTpK8qZHk96db7EfkmTDdcnVP3I141SL8WbBBppXrt8vQR3B5+iWlZEy5oCqm6mwKNbdX4UIrlinW0ijcHgnPvYNG7nGGj1P5C6kwdpV9Ss55Emw2aLNHoBYK3YLYRTNOn/pjW79t4sP4GH7u+QQj6JJk3JMmbyTvKMw9GUyGVu8vzI4dWnfnE7K1QQLZnK9GTZoFgLTeBv77qh2HW0GFwZpQTUbU3mNQsPhgbgnY/NIqmGEkAyORiPomjBAbET6CgKSduwaHfhYQyYltApcgDGKflokU14sWKWOi1MGyamfOqdJWlYxLcC0SSOaaUyuo0UWQrMsk5p8RT6oEocOJSK5I2W0aSLZRXqIsiqYUaImUCipCmiA1dDUlBspFNdDFcGqQClEspFNU4hlkaqMULKNcEM3j0CCjMxdcpcCudlXuL49BAKkHKgFSlInQ1FpKHzH/AEH/AN/hcrAVHEsaabg4wP8Agwr8DuaQk+EZvwyyazfVfUf8SGHRTH/wt/2r514WY04gAEAanR8jC+oeN2agwAg/qR3/AAruQl7WjG48pnzrC1SfIH7LHj5k/wBUxabpSA5pbb4WuJHOJCI/T40mN9+3SI3XNzYZZPpNKko/UNsSdlOo2n5YIJ1yZbFotBB67pdicwEwWm1/axntuoOxjLCbmPQSQDqPa/yVS0eV+P5D60EV1d1dh3woa2yXEEhpl2zWim10EEiSXERt15qsYqm4FzS1oJ4RqJMXN/lHuFYtFlTE9aI0ZVlHYZkpBh8c28X0idOxIttPOSBCv/zGo3SXamsJgHTGqAC4NPaR9FdDTZPIryR8Guw9OEeMS4UzT/CSHR3AI/MrD4fMa5qNDXuMEk03Nc0xIEOdpna9lOrmFfSD5wEktIgkAkONrSQ0AE87hX/47E9Q1L2qDWLFYvEVnPLXVt+QdHKYkkWhcfia12trcWzWDVxAwAZmBGr5hOsAryG2qNCCxcAEyI3lZJ9SoIdSNQw069TyWB0kW6tIt80E5lRlJ+kAAaQSHkzLpnSdhAIRen3KrB6tGsL29R81BzxMSJ6SFkKeIe2np0Ndqh2oip5hY03Am3FYTGyobiGmJBkSCYJ/FYQe0KmWg/Udaj9DcZOxzWgOMlOKLkroOuUww5SjBbtkp/EUzdsqMVlxZSZWc4A1HHQyDqLW7v7CbIJ0wtEqBRTXICi9FakWAuL1xr1TKsCQJeCvSoi9gj/8nrAXaB6uYPuULDQI1crUZHI+h/JEY7BmnHE10j8LgYPSxQbnKdk6FlbKmOJ1P0fylw94uPkUpx2WtYCW1WvPQNqD3lzQFq/NPMz63+hVNTDtO4Ween3O7LFkpVRilfTpSJmLGO8cgtI/KWHkhn5KAZBhVS00/AyyLyITZEUKzA1zKlPW1w5We0wYLHcjfYyCpYrD6XRaRygQfWFpqP6E+nRb5Ya/Q81HaXwaguxocAQ2d/RKsGSLVIZSi0+T5jSzCmMS55vTmxcwAxaJaLD0C2mLzHB1oa3SSaPCGsPxxYbLH47KX/pdSnh2vrBpEwBMWmZ26LSMp+diaOHNMYanUY0OLXNOqBuHHYyuvUnDgzQlFT9y/BovD+SMbU8+l8AZAkQdRIkEdRB9R6JnjvD1CrLn0wD+03hN/Tc+qu8PYV1F4w1XgDhNM8i2mbPAJkW3B6yCU3fgHgyzibJEtMgRvqHL36rPpnKMXCfaZbqFGUt0emYrEf4fO0uqU36m34XcJ1Rw8XMTFrLI4/Jq1EaatN4MjjBhhAmwiQTteeWy+0YnG0z5Y08+Ig6ZjlHO/wBkJXYXEtbBHR0XVvrbfqKvSvo+NGoGt0upltiDD7kxZxBtPJRFaIdDp3EdRsYHb7lfR8Z4aoOB4NEiHFsXvPORuOSx+Y5XXYNDWMIlzgS3jgAiS5sGOcTEhWx1OMV6eYmpYq8+5BvfVbffcWRQxEFg1AHVM3F5kugb/NDYptQFvmMLQCLX4usTYSYVLKjjxFoABNnAOEDZp1/h7LTFJ8oola4YfRdJtMtOq4MGDvBPFty2VtLEt0MpOMy7UCTZznENDtPI2if3QhG8mnS1z3Ws2AA2IMTw9OUmfSX6W4ww6AdTr2GkDmQDE29pKdxoRSsubUaQ5tQwxrpdAi4B0EOmDBLR81XqaKhlztLp0Q0E2bw6mkiA6Qd1Ku3YPY0OF5BfxAwWugxy2XcTVbwEw583BnVpAs11oO3L58kEknQW32C4gsPEQGyHHYTAB6m//Kqw1BuotAeXkExMgG0l0m8bzy37K6s0aSSBqIhrSDAtZ0SATNvdRe+D5p103NuwgQehjSOpF+SZR8iuXgpxNUOBOuYGkWHa8zII7dVQWjUQ57hYQ7SXk2AIMmwnbfmrsZiGvmX1HmJc52ok33IH/ZVWP4XmDqbAjgafiGo2n97dRJpkbVGwwj7lM6RhKcIOIpk1cw2BLqiX5hmL6rwXumAGjoGtsAANkWdklqnjQiuSPoZUnIkOQNAphh6bSJc8N7QSf6fVGREWMKmHLjiyIbqJ5kwB7AT91wBIMWgqWpUkqOpCiF5K8PqqwUyykB74qVC1jWlzuKDAGw6lBulYVyAq+lQe4S1rnAbkAn7KNTFCTDGx31Ex3JKgKn7rfr+ZRTfwBpfIywWEEnzW1R0DW7+pOyni8ANXCdLeQJLj82tQeGxDR8cx0ZpbPqYVtbGNIIbTaJ5kuc75kx9FPcH20YjOHDznDv8AkFOoymRSfTqO1tLtbCA0EGNJBJj5ofN6jRWfLS4zYaoGwtYSfovU8QKYA0s8ztfR7mTr9Db12Lk01XYYpVyMv0cNr1KoApl2iQXUy+zTqgt1CNjG6KxFN1Z9LTh2ljQ5h4aXFJNxMFszNilFaqA5wta1nB1xYnULGSrcPgnGm6sTpYPhnd5kWHUIZskpJbml9v8Ao+FKLaSHmX5K6liGEkMBeGAOqBxEn4Bubxst6MK1pmm7S/ijZmo83EH4jbcbL5QzHPaWEE8DtTQbgGZt0lbzw74kGJqeSG6XO1kMcZBiXaWnruqKmpXZbOpRVAuaU8aKjqZ8p5ds8UzMRPxiB8+YUcuFcSXBrpaAA7g0mb8Zhs+6eYljC0FjtDtTmgHiZtBnp7FepNqlpBh7XAB1NxD6byNIm9xYdimc90ff0IltftKKuIayGVSKcAEB2zzz0vFnDvdZrF4rzKjoiCYtFhzXc+ovY7QwPa18gUWklg1fstuB6gJHQ/VH46jagmYa0tIggjTAI5X7qf4e5XB38DR1Ox+5GibQpu4Ya4bQYP0K5nHgPDOA0S10D4Zj/wCp7pfluJc4lzaTnhhGp1NpkDkS3eJ7J7/murZ2ogbEQ4egWTJDPg+ls0N481dMwWa+HcTh2HS4FgImDxSJix/JZZjtPC5vud4W2z/HlxIulNCi18NIBXSwazIof7OTHl0cHKoMV0ccC4MdULWS1geWmo5tNpta8AC9govxQbUcJNVtxqI0zBsRPUJ3mPhgC9OUjGW1A4gCY6f0W3FrcWRWn+TJk0eTH2vwUYkueW6SRbYCXDl06K/C4upS4tWpsOGlxDhxwHQw7Hn7KrU6m6CHA9+E+yGa5pdxSG3uLula0+ODK18ltWx5mxgzt133sqzWECIi/VdGKsGgbG5JJkdI5KWcYxtVwNKkykwD4AZbq5uE8yleNNBU6ZrsE7iKaMSjBmHFOKa5lG0sYJQ9fAUmSatSXwYp04dBixe/YX5CUSAlbxxFBRbZLLcMxGhqHwwTDD0i4wBJ/u6ZgRXhwCQCYE3N7d7Jq3yG/t1D/wDm38yfohfKpt3lzv3SA0e95VdR3QQOm/1VTVjolXcCSQ0NB5CYHzMqvSvSpMN73RoFllKi4/CCfQSqHg7IirUJgbAbAbf9rtPDcLnvOloHD1e79kdhzKnXZP2BwpNK9C6BCagElILgKNo4Zopmo8kAyKbRu49ezR19lOiHz7O6r213lm5JFhe8C3Q+l1Rj8BUw+kVC1r3CTTmXs2jzAPhJ3A3VuZ4+pQxJq0yQ9j3FpgGJBEgHmJskVTElziXElzjJk3JNySeaO1thtUNsJiG6hrJ0zJDdyBy7TsmNfNqlct1QGtAaxjfha0bAD81mfNtOyZZZUEhLLGr3DRm6oZFyd+BqbHYylreWBsuBBjibcCeSRVXjkhi8jbqq5R3JoeMqY4zDN6jK1Xy3EN8x50TLNzy2Wt8J+L2BumqNTnnYAuiOZHIQvmxfNyvYbMHUajarDDmm3fqCqp4m40u0WLIr93TPr+dYiiTT0v8Ai1ODmm7SDy7X27JXiMypvdoxAFQcqrQBUHryd7rBY7NA9wqU5a43MWAKgM1cTLvi/aFp9Qlx24q1TGyRinSdn1mixlCkMRgxLXxrmzmkWuBv6KjE5hha8mvSaDF3CWvH8wgpB4H8TfFTdBB3BTvHZS2rLmwZvG0ehWfNl2yp3+6LMcE1z+TE5zgsO/zH4evp0XFOuYe7mSx2x7A3SPBVS1w1COhWwzLw3RGHqve8iswt00zEuBiSDuefyWWwlcgtDHAgH4Xf1XTgsWXH7WZm8mOds3+Hyiu7Dh+gP1NlpFnDob7rDUDFSYgzutc7xnV0OpUqQYNMNAvptBiTssZTLpJWHHo8mNSbXZrWqUnyzSUMtbiGw9oIHa6z/iXwgKQL2bDcT1W68D4UVWuJMEbDqsv4ozR9R1SnBgHbnbr7hZ9LPUQ1CUX7b6G1KxzjK1yl9zDYxhIaIa2OnP1Qrm9UTVJm6peF6N5WziKCRpMM4+Yei0FHZZnJi4iXbrSUDZZUXsIc5KqjuJMXmyVv3KaK5FYxwiYU6Z5CUD4WwNWs5zjDKbPiqOMAdu57LTVcxbTGjDCOTqpHG70/ZCSUuaQyXyKA26scyycZFlzXB1asYpM36udyYPVA4+q1z3Oa0NBJho2A5BD9CC9rYUmhKc1zEsKNy7GB7ZRolhoQmcYt503J0gAdgOQCjiswazcpXWzFrwRPopRLGoxIDQSVYKsiyyGJ8yN+aJp5uWACNk1ANXTU2hJMPmstlc/znVsFKIIfEDZrVB+9I+SR4ilB9E0zOqTVeep/JC7z3SxnTGcbQvgxb3RODxGkwforDhgffdQOEI25Ky00JTQ2p1gQp1MO8MDy06XEgO5EjcIKjRLXaTeOm202T7G4thwlCk08TXVC8fxGx+SzTlTVef6L4x7vwJXIHE1Lwjnpe/dWQQki+m5T1KsLyql2Oi1lQgyDB6hPcv8AFlamIfxj5H5rPFQqbKuUIz4aLI5JR6NDiPEet5PIjYlRrU6dRs0mkPPaPqssXQthlmKhg9Fqx6eMlXVFUtTJN+bGmW0qhpubo4w0xMX9ClFMPILSxw23FrdEa7MDyP1UHZ2R1WjDieK/daKs2VZa4oZ+GcxrYZ5e6m9wBs0bQd/e6GzGqK1etUbTdTD/AMLhzIuVDBeJIkncbDqhsbnpe4usJ6JPSTy7/wCQ+pUKF9TInnYICtktUfhKYvz542KGf4kq9VpqBn9wd4bpefVDZDRBLnHZrWiXOPoE7xuJpl5NNulmzRzgWk9zufVfP8I2u2zWEmCbcgNyeyOFfEkQGrFXPZo8GxwNF1U2s0fE82aPdLcz8oVg2i4vEcTjsT+72Sys/HVWsYSGsbHC0QCRzd1KPwlBw+MXS41Jytv7f2Ge1Kl+RvhLBHByEwuyJeYVzKwhtUxE23jl6oHE5i1pglAY/N2sMSs9i8R5jpS7Q2abEUGVhaCo08L5LTF0kyWq9r9yQte2HBSiWZN7Nbpf1U8RlzYlpT/FYVkbbIHBkPJaOShCGVUQWwbrjcIHVQ0NuSAPUmAmVDCFoJAMDc8pO32KJwOEL3jSYI4tX7Ibcu9oSthoCxeVeVUfTB1Bri2dgYMShatEAENbeCbDpclb7/JgcIKr/jhzyeZJPPrt9VlMWRSY8/iqM0s7NLoee1mkfzFVrJutDbaM1k+SCv573v0NpU3PmJkjZvuAT7JIaRlOaObvpsq0WxpqEarX4YiD/e5QugbqpXbL6TXALRp/ZNqGCsCRugabgEe7GAgabQpNvwNjjFXY8weTUiwuIl3qbWS/EZYDJEDf7IR2PcGRqd3E2U6OOdFlmUMibdmrdjfFCrE04lA+WnuNp6mzCTvb2WzHPgx5sdMhC7pVkLzUlgSKi1V1Atz4W8MUsXQqEOIrNmBNv3bdCs/meTPpGCPl1G49VVHPFy2+Sx4XXBmaoT3AVP1Y9EuxlCGzF0ThDwBdPFJNWYZpphpqKupVhQJVVQqyxTrqqofUUXvVFZ6WyEaj1U5yi8qvUgE//9k="
+                    alt="Ilustrasi Tantangan"
+                  />
+                </div>
+              </div>
+              <div class="podium-base"></div>
+            </div>
+            <div class="reveal right">
+              <div class="podium-container">
+                <div class="reveal grid2-container">
+                  <h3 class="feature-number" style="color: #00008b">02</h3>
+                  <h3 class="section-title">
+                    Kelemahan Pemeliharaan Preventif Tradisional
+                  </h3>
+                </div>
+                <p>
+                  Pemeliharaan preventif, yang mengandalkan jadwal tetap, tidak
+                  efektif karena tidak mempertimbangkan kondisi aktual mesin.
+                  Hal ini menyebabkan mesin masih berisiko mengalami kerusakan
+                  mendadak di luar jadwal perawatan.
+                </p>
+                <div class="reveal">
+                  <img
+                    src="https://leantech.com/wp-content/uploads/2025/05/1.jpeg"
+                    alt="Ilustrasi Tantangan"
+                  />
+                </div>
+              </div>
+              <div class="podium-base"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="solution">
+        <div class="container text-center">
+          <div class="intro-text">
+            <h2 class="section-intro reveal">Solusi</h2>
+            <h3 class="section-title reveal right">
+              Deteksi Anomali Melalui Pengklasifikasian Berbasis Model Mesin
+              Pembelajaran.
+            </h3>
+            <p class="reveal left" style="text-align: justify">
+              Model tersebut menganalisis dari beberapa kondisi data sensor dari
+              mesin <i>milling</i> secara <i>real-time</i> untuk mendeteksi
+              anomali. Pembuatan model menggunakan bahasa pemprograman python.
+              Model dibuat melalui pendekatan klasifikasi biner. Hasil analisis
+              model tersebut berupa penyataan anomali dan normal. Selain itu,
+              model dilakukan penguji tingkat efektif mesin pembelajaran
+              diantaranya <i>random forest</i>,<i>extreme gradient boosting</i>,
+              <i>support vector machine</i>, dan
+              <i>artificial neural network</i>. Pengujian model melalui beberapa
+              pengukuran <i>confusion matrix</i>, <i>precition</i>,
+              <i>recall</i>, <i>f1-score</i>, <i>Precision-Recall Curve</i>,
+              <i>G-Mean</i>, dan <i>Matthews Correlation Coefficient</i>.<br />
+            </p>
+            <img
+              src="assets/img/Diagram_Alir_AI.jpg"
+              style="width: fit-content; margin-top: 2vh"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="Process">
+        <div class="container">
+          <div class="feature-item">
+            <div class="grid-container">
+              <div class="feature-image-wrapper">
+                <img
+                  src="assets/img/Preprocessing_alir.jpg"
+                  alt="Fitur 1"
+                  class="feature-image"
+                  data-original-src="assets/img/Preprocessing_alir.jpg"
+                />
+              </div>
+              <div class="feature-content-wrapper reveal left"></div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="grid-container">
+              <div class="feature-image-wrapper">
+                <img
+                  src="assets/img/Diagram_AI.jpg"
+                  alt="Fitur 1"
+                  class="feature-image"
+                  data-original-src="assets/img/Diagram_AI.jpg"
+                />
+              </div>
+              <div class="feature-content-wrapper reveal right">
+                <h4 class="feature-title">Model Mesin Pembelajaran</h4>
+                <p>
+                  Model <i>random forest</i>, <i>extreme gradient boosting</i>,
+                  <i>support vector machine</i>, dan
+                  <i>artificial neural network</i> menganalisis
+                  <i>air temperature</i>, <i>air process</i>, <i>torque</i>, dan
+                  <i>rotational speed</i> untuk memberikan pernyataan mesin
+                  mengalami kondisi anomali atau normal. Setiap model memiliki
+                  parameter dan cara mempelajarinya tersendiri.
+                </p>
+                <button class="read-more-btn">
+                  Selengkapnya <i class="fas fa-chevron-down"></i>
+                </button>
+
+                <div class="more-content">
+                  <div
+                    class="process-component"
+                    data-img-src="assets/img/Real_RandomForest_model.jpg"
+                  >
+                    <h4>Random Forest</h4>
+                    <p>
+                      <i>Random Forest</i> adalah sebuah metode algoritma ML
+                      yang termasuk kedalam kategori yang menggabungkan beberapa
+                      pohon keputusan. Model ini memiliki bootstrap aggregating
+                      (bagging) untuk mengurangi varian dan meningkatkan
+                      stabilitas prediksi. Berikut Parameter dari model ini:
+                    </p>
+                    <ol style="list-style-position: inside">
+                      <li><i>n Estimator</i>: 100</li>
+                      <li><i>Criterion</i>: gini</li>
+                      <li><i>Min_samples_split</i> : 2</li>
+                      <li><i>Min_samples_leaf</i> : 2</li>
+                      <li><i>Max_features</i> : <i>sqrt</i></li>
+                      <li><i>Max_depth</i> : <i>none</i></li>
+                      <li><i>Bootstrap</i> : <i>true</i></li>
+                      <li><i>Class weight</i> : <i>balanced</i></li>
+                      <li><i>Random state</i> : 42</li>
+                    </ol>
+                  </div>
+
+                  <div
+                    class="process-component"
+                    data-img-src="assets/img/Real_XGboost_model.jpg"
+                  >
+                    <h4>Extreme Gradient Boosting</h4>
+                    <p>
+                      <i>Extreme Gradient Boosting</i> (Xgboost) adalah sebuah
+                      metode algoritma ML dalam kategori ensemble learning,
+                      khususnya boosting untuk meningkatkan kecepatan model.
+                      Model ini menerapkan teknik regularisasi sehingga mampu
+                      mencegah overfitting, yang sering menjadi tantangan dalam
+                      model yang kompleks. Berikut Parameter dari model ini:
+                    </p>
+                    <ol style="list-style-position: inside">
+                      <li><i>Learning rate</i>: 0.22</li>
+                      <li><i>n Estimator</i>: 600</li>
+                      <li><i>Gamma</i> : 2</li>
+                      <li><i>Max_depth</i> : 4</li>
+                      <li><i>Min_child_weight</i> : 3</li>
+                      <li><i>Reg_lambda</i> : 1</li>
+                      <li><i>Reg_alpha</i> : 2</li>
+                      <li><i>Subsample</i> : 0.7</li>
+                      <li><i>Colsample_bytree</i> : 0.7</li>
+                      <li><i>Scale_pos_weight</i> : <i>balanced</i></li>
+                      <li><i>Random state</i> : 42</li>
+                    </ol>
+                  </div>
+
+                  <div
+                    class="process-component"
+                    data-img-src="assets/img/Real_SVM_model.jpg"
+                  >
+                    <h4>Support Vector Machine</h4>
+                    <p>
+                      <i>Support Vector Machine</i> (SVM) adalah sebuah metode
+                      algoritma pembelajaran mesin yang berfokus pada pencarian
+                      hyperplane optimal yang memisahkan kelaskelas dalam ruang
+                      fitur. SVM bekerja dengan membangun model yang
+                      memaksimalkan margin antara dua kelas. Margin
+                      didefinisikan sebagai jarak terdekat antara titik data
+                      dari masing-masing kelas ke hyperplane. Berikut Parameter
+                      dari model ini:
+                    </p>
+                    <ol style="list-style-position: inside">
+                      <li>c: 99.78</li>
+                      <li><i>Gamma</i> : 0.99</li>
+                      <li><i>Probability</i> : 4</li>
+                      <li><i>Class weight</i> : 3</li>
+                      <li><i>Kernel</i> : 1</li>
+                      <li><i>Random state</i> : 42</li>
+                    </ol>
+                  </div>
+
+                  <div
+                    class="process-component"
+                    data-img-src="assets/img/Real_ANN_model.jpg"
+                  >
+                    <h4>Artificial Neural Network</h4>
+                    <p>
+                      <i>Artificial Neural Network</i> (ANN) adalah model
+                      komputasi yang terinspirasi oleh jaringan saraf biologis,
+                      yang terdiri dari elemen-elemen pemrosesan sederhana yang
+                      disebut neuron. Neuron ini saling terhubung dan bekerja
+                      secara paralel untuk menyelesaikan berbagai tugas. ANN
+                      terdiri dari tiga komponen utama: lapisan masukan, lapisan
+                      tersembunyi, dan lapisan keluaran. Berikut Parameter dari
+                      model ini:
+                    </p>
+                    <ol style="list-style-position: inside">
+                      <li><i>Input layer</i>: 4 neuron</li>
+                      <li><i>Hidden layer</i> 2 layer</li>
+                      <li><i>Hidden layer</i> pertama : 64 neuron</li>
+                      <li><i>Hidden layer</i> kedua : 16 neuron</li>
+                      <li><i>Dropout</i> dalam <i>hidden layer</i> : 0.2</li>
+                      <li><i>Output layer</i> : 1 neuron</li>
+                      <li><i>Optimization</i>: 4 neuron</li>
+                      <li><i>Epoch</i> 2 layer</li>
+                      <li><i>Batchsize</i>: 4 neuron</li>
+                      <li><i>Random state</i> 2 layer</li>
+                      <li><i>loss</i>: 4 neuron</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="grid-container">
+              <div class="feature-image-wrapper">
+                <img
+                  src="https://placehold.co/600x450/FCF3CF/D4AC0D?text=Evaluasi+Model"
+                  alt="Fitur 2"
+                  class="feature-image"
+                  data-original-src="https://placehold.co/600x450/FCF3CF/D4AC0D?text=Evaluasi+Model"
+                  data-img-src="https://placehold.co/600x450/FCF3CF/D4AC0D?text=Evaluasi+Model"
+                />
+              </div>
+              <div class="feature-content-wrapper reveal left">
+                <h4 class="feature-title">Pengujian</h4>
+                <p>
+                  Pengujian setiap model dilakukan untuk melihat tingkat
+                  efektivitasnya. Tingkat efektivitas dilihat melalui
+                  <i>precition</i>,<i>recall</i>, <i>f1-score</i>,
+                  <i>precision-recall curve</i>(PRC),
+                  <i>matthew correlation coefficient</i>(MCC), dan
+                  <i>G-mean</i>. Hal tersebut merujuk pada kegunaan model
+                  tersebut dalam mendeteksi keberadaaan titik normal dan
+                  anomali.
+                </p>
+                <button class="read-more-btn">
+                  Selengkapnya <i class="fas fa-chevron-down"></i>
+                </button>
+
+                <div class="more-content">
+                  <div
+                    class="process-component"
+                    data-img-src="assets/img/Presisi_formula.png"
+                  >
+                    <h4>Precision</h4>
+                    <p>
+                      <i>Precision</i> adalah proporsi hasil prediksi positif
+                      yang benar-benar positif. Semakin tinggi nilai
+                      <i>precision</i>, semakin sedikit prediksi positif yang
+                      salah.
+                    </p>
+                  </div>
+
+                  <div
+                    class="process-component"
+                    data-img-src="assets/img/Recall_formula.png"
+                  >
+                    <h4>Recall</h4>
+                    <p>
+                      <i>Recall</i> adalah kemampuan model untuk mendeteksi
+                      semua kasus positif yang sebenarnya. Nilai
+                      <i>recall</i> tinggi berarti model jarang melewatkan kasus
+                      positif.
+                    </p>
+                  </div>
+
+                  <div
+                    class="process-component"
+                    data-img-src="assets/img/F1-Score_formula.png"
+                  >
+                    <h4>F1-Score</h4>
+                    <p>
+                      <i>F1-Score</i> adalah harmonic mean dari
+                      <i>precision</i> dan <i>recall</i>, memberikan
+                      keseimbangan antara kedua metrik tersebut. Metrik ini
+                      berguna ketika kita perlu menyeimbangkan
+                      <i>precision</i> dan <i>recall</i>, terutama pada dataset
+                      yang tidak seimbang (imbalanced). <i>F1-score</i> lebih
+                      baik daripada akurasi biasa karena tidak dipengaruhi oleh
+                      mayoritas kelas negatif.
+                    </p>
+                  </div>
+
+                  <div
+                    class="process-component"
+                    data-img-src="assets/img/PR_curve.jpg"
+                  >
+                    <h4>Precision-Recall Curve</h4>
+                    <p>
+                      <i>Precision-Recall Curve</i> (PRC) adalah grafik yang
+                      menunjukkan hubungan antara <i>precision</i> dan
+                      <i>recall</i> pada berbagai threshold klasifikasi. Kurva
+                      ini lebih informatif daripada ROC curve untuk dataset
+                      tidak seimbang karena fokus pada kelas minoritas.
+                      <i>Area Under the Curve</i> (AUC) dari kurva ini (AUC-PR)
+                      digunakan untuk mengevaluasi performa keseluruhan model.
+                    </p>
+                  </div>
+
+                  <div
+                    class="process-component"
+                    data-img-src="assets/img/MCC_formula.png"
+                  >
+                    <h4>Matthew Correlation Coefficient</h4>
+                    <p>
+                      <i>Matthews Correlation Coefficient</i> (MCC) adalah
+                      metrik korelasi antara prediksi model dan label aktual,
+                      yang menghasilkan nilai antara -1 hingga 1. Nilai 1
+                      menunjukkan prediksi sempurna, 0 menunjukkan prediksi
+                      acak, dan -1 menunjukkan prediksi selalu salah. MCC sangat
+                      tangguh terhadap ketidakseimbangan kelas dan memberikan
+                      gambaran seimbang tentang performa model.
+                    </p>
+                  </div>
+
+                  <div
+                    class="process-component"
+                    data-img-src="assets/img/G-mean_formula.png"
+                  >
+                    <h4>G-mean</h4>
+                    <p>
+                      G-mean adalah akar kuadrat dari hasil kali
+                      <i>recall</i> (sensitivitas) dan spesifisitas...
+                      (deskripsi lengkap)
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="result"
+        style="background-image: url('assets/img/section5.png')"
+      >
+        <div class="container text-center">
+          <div class="content-box">
+            <h2 class="section-intro reveal">Hasil</h2>
+            <p class="reveal" style="text-align: justify">
+              Berdasarkan hasil pengujian mengungkapkan bahwa model ANN unggul
+              dengan nilai-nilai yang terbaik berdasarkan evaluasi dibandingkan
+              metode lain. Hal ini terlihat dari evaluasi classification report
+              pada kelas anomali yaitu nilai presisi 0,81, nilai recall 0,91,
+              dan nilai f1-score 0,85. Jika melihat kurva PRC, nilai ANN lebih
+              unggul. Selain itu, nilai g-mean dan MCC unggul yaitu
+              masing-masing bernilai 0,95 dan 0,85.
+            </p>
+            <div class="image-scroller reveal">
+              <div class="scroller-filmstrip">
+                <img src="assets/img/Hasil_1.png" alt="Learning Curve" /><img
+                  src="assets/img/Hasil_2.png"
+                  alt="Pencarian Ambang Batas"
+                /><img
+                  src="assets/img/Hasil_3.png"
+                  alt="Confusion Matrix"
+                /><img src="assets/img/Hasil_4.jpg" alt="PR-Curve" />
+                <img src="assets/img/Hasil_6.jpg" alt="MCC" />
+                <img src="assets/img/Hasil_5.jpg" alt="G-Mean" />
+              </div>
+              <div class="scroller-nav">
+                <button class="prev-btn">
+                  <i class="fas fa-chevron-left"></i></button
+                ><button class="next-btn">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+              <div class="scroller-dots"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container text-center">
+        <div class="social-links">
+          <a href="#"><i class="fab fa-github"></i></a
+          ><a href="#"><i class="fab fa-linkedin"></i></a
+          ><a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2024 [Nama Anda].</p>
+      </div>
+    </footer>
+    <div id="floating-nav">
+      <button id="nav-toggle-btn"><i class="fas fa-plus"></i></button>
+      <div class="nav-item-wrapper">
+        <span class="nav-tooltip">Hasil</span
+        ><a href="#result" class="nav-item" style="color: #ba8c3d"
+          ><i class="fas fa-flag-checkered"></i
+        ></a>
+      </div>
+      <div class="nav-item-wrapper">
+        <span class="nav-tooltip">Proses</span
+        ><a href="#Process" class="nav-item" style="color: #d4ac0d"
+          ><i class="fas fa-star"></i
+        ></a>
+      </div>
+      <div class="nav-item-wrapper">
+        <span class="nav-tooltip">Solusi</span
+        ><a href="#solution" class="nav-item" style="color: #34495e"
+          ><i class="fas fa-lightbulb"></i
+        ></a>
+      </div>
+      <div class="nav-item-wrapper">
+        <span class="nav-tooltip">Tantangan</span
+        ><a href="#challenge" class="nav-item" style="color: #c0392b"
+          ><i class="fas fa-bullseye"></i
+        ></a>
+      </div>
+      <div class="nav-item-wrapper">
+        <span class="nav-tooltip">Beranda</span
+        ><a href="#home" class="nav-item" style="color: #2a4466"
+          ><i class="fas fa-home"></i
+        ></a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+    <div id="image-modal" class="modal-overlay">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div class="modal-zoom-controls">
+          <button id="grab-btn" title="Geser Gambar">
+            <i class="fas fa-hand-paper"></i>
+          </button>
+          <button id="zoom-in-btn" title="Perbesar">
+            <i class="fas fa-search-plus"></i>
+          </button>
+          <button id="zoom-out-btn" title="Perkecil">
+            <i class="fas fa-search-minus"></i>
+          </button>
+        </div>
+        <img id="modal-image" src="" alt="Gambar Diperbesar" />
+      </div>
+    </div>
+  </body>
+</html>

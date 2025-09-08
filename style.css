@@ -1,0 +1,786 @@
+/* --- Reset & Basic Setup --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f4f6f7;
+  color: #1c2833;
+  line-height: 1.6;
+}
+body.scroll-lock {
+  overflow: hidden;
+}
+/* --- Layout & Container --- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+section {
+  padding: 6rem 0;
+  position: relative;
+}
+/* --- Typography --- */
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.2;
+  font-weight: 800;
+  color: #212f3d;
+}
+/* --- Reusable Components --- */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.text-center {
+  text-align: center;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  background-color: #2a4466;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.btn:hover {
+  transform: translateY(-3px);
+  background-color: #34495e;
+  box-shadow: 0 8px 25px rgba(52, 73, 94, 0.3);
+}
+section:not(:first-child) p {
+  text-align: justify;
+}
+/* --- Section Styling --- */
+#home,
+#result {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s ease-out;
+  overflow: hidden;
+}
+#home {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: 120%;
+  background-image: url("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop");
+}
+#home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(42, 68, 102, 0.5);
+  z-index: 1;
+}
+#home .content {
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+#home h1 {
+  color: #ffffff;
+  font-size: 3rem;
+}
+#home p {
+  font-size: 1.25rem;
+  max-width: 48rem;
+  margin: 1rem auto 2rem;
+  color: #eaecee;
+}
+#home .btn {
+  background-color: white;
+  color: #2a4466;
+  animation: pulse 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+.section-intro {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+#challenge {
+  background-color: #ffffff;
+}
+.content-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+}
+.content-wrapper > div {
+  flex: 1;
+}
+.fill-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.podium-container {
+  position: relative;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+.podium-base {
+  position: absolute;
+  bottom: -10px;
+  left: 5%;
+  width: 90%;
+  height: 20px;
+  background-color: #e5e7eb;
+  border-radius: 1rem;
+  filter: blur(5px);
+  z-index: 5;
+}
+#solution {
+  background-color: #f4f6f7;
+}
+#solution .intro-text {
+  max-width: 42rem;
+  margin: 0 auto 3rem;
+}
+#result {
+  background-size: 100%;
+  background-image: url("https://images.unsplash.com/photo-1621947081720-86970823b77a?q=80&w=1932&auto=format&fit=crop");
+}
+#result .content-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 4rem 1.5rem;
+  max-width: 56rem;
+  margin: 0 auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(212, 172, 13, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Styling untuk Bagian Process --- */
+#Process {
+  background-color: white;
+}
+#Process .feature-item {
+  margin-bottom: 6rem;
+}
+#Process .grid-container {
+  align-items: flex-start;
+  gap: 4rem;
+}
+#Process .feature-title {
+  font-size: 1.875rem;
+  margin-bottom: 0.75rem;
+}
+#Process
+  .feature-item:nth-child(even)
+  .grid-container
+  > .feature-image-wrapper {
+  order: 2;
+}
+#Process
+  .feature-item:nth-child(even)
+  .grid-container
+  > .feature-content-wrapper {
+  order: 1;
+}
+#Process .feature-image-wrapper {
+  height: auto;
+  transition: height 0.4s ease-in-out;
+}
+#Process .feature-image {
+  position: sticky;
+  top: 5rem;
+  width: 100%;
+  height: 450px;
+  object-fit: contain;
+  object-position: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: opacity 0.15s ease-in-out;
+  background-color: #ecf0f1;
+}
+#Process .read-more-btn {
+  background-color: transparent;
+  color: #2a4466;
+  border: 1px solid #2a4466;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+#Process .read-more-btn:hover {
+  background-color: #2a4466;
+  color: white;
+}
+#Process .more-content {
+  display: none;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+#Process .process-component {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+  border: 1px solid transparent;
+}
+#Process .process-component.active {
+  background-color: #eaf2f8;
+  border-color: #aed6f1;
+}
+/* --- Image Scroller --- */
+/* --- Image Scroller --- */
+.image-scroller {
+  margin: 40px auto 0;
+  position: relative;
+  max-width: 700px;
+  max-height: 388px; /* Tinggi maksimal slider */
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 0 10px white, 0 0 0 11px #e5e7eb;
+}
+
+.scroller-filmstrip {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  /* TAMBAHKAN: Atur tinggi filmstrip agar sama dengan slider */
+  height: 388px;
+}
+
+.scroller-filmstrip img {
+  /* Diperbarui untuk memastikan 'contain' berfungsi */
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0; /* Mencegah gambar menyusut */
+  object-fit: contain; /* Gambar akan pas tanpa terpotong */
+  background-color: #f28705; /* Warna latar belakang untuk area kosong */
+}
+
+.scroller-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+.scroller-nav button {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.2s ease;
+}
+.scroller-nav button:hover {
+  background-color: white;
+  transform: scale(1.1);
+}
+.scroller-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.scroller-dots span {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.scroller-dots span.active {
+  background-color: white;
+}
+/* --- Footer --- */
+footer {
+  background-color: white;
+  padding: 2.5rem 0;
+  border-top: 1px solid #e5e7eb;
+  color: #6b7281;
+}
+footer .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+footer .social-links a {
+  font-size: 1.5rem;
+  color: #95a5a6;
+  transition: color 0.3s ease;
+}
+footer .social-links a:hover {
+  color: #2a4466;
+}
+/* --- Animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.right {
+  opacity: 0;
+  transform: translateX(100px);
+}
+.left {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Floating Navigation --- */
+#floating-nav {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.75rem;
+}
+.nav-item-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  transform: scale(0);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+#floating-nav.open .nav-item-wrapper {
+  transform: scale(1);
+}
+#floating-nav.open .nav-item-wrapper:nth-of-type(1) {
+  transition-delay: 0.05s;
+}
+#floating-nav.open .nav-item-wrapper:nth-of-type(2) {
+  transition-delay: 0.1s;
+}
+#floating-nav.open .nav-item-wrapper:nth-of-type(3) {
+  transition-delay: 0.15s;
+}
+#floating-nav.open .nav-item-wrapper:nth-of-type(4) {
+  transition-delay: 0.2s;
+}
+#floating-nav.open .nav-item-wrapper:nth-of-type(5) {
+  transition-delay: 0.25s;
+}
+.nav-item {
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.nav-item-wrapper:hover .nav-item {
+  transform: translateY(-6px);
+}
+.nav-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  background-color: #34495e;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(5px);
+  transition: all 0.2s ease;
+}
+.nav-item-wrapper:hover .nav-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+#nav-toggle-btn {
+  width: 4rem;
+  height: 4rem;
+  background-color: #2a4466;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+#nav-toggle-btn i {
+  transition: transform 0.3s ease;
+}
+#nav-toggle-btn.open i {
+  transform: rotate(135deg);
+}
+/* --- Gaya untuk Gambar yang Dapat Diklik --- */
+main img {
+  cursor: zoom-in;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+main img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+/* --- Gaya Modal Pop-up Gambar --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(44, 62, 80, 0.9);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  cursor: default;
+}
+.modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-content {
+  position: relative;
+  transform: scale(0.8);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.modal-overlay.visible .modal-content {
+  transform: scale(1);
+}
+#modal-image {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease-in-out;
+}
+.modal-overlay.cursor-grab #modal-image {
+  cursor: grab;
+}
+.modal-overlay.cursor-grabbing #modal-image {
+  cursor: grabbing;
+}
+.modal-overlay.cursor-zoom-in #modal-image {
+  cursor: zoom-in;
+}
+.modal-overlay.cursor-zoom-out #modal-image {
+  cursor: zoom-out;
+}
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  color: #2c3e50;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 1002;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.modal-close:hover {
+  transform: scale(1.1);
+  background-color: #e74c3c;
+  color: white;
+}
+.modal-zoom-controls {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  border-radius: 25px;
+  display: flex;
+  gap: 10px;
+  z-index: 1001;
+  cursor: default;
+}
+.modal-zoom-controls button {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.modal-zoom-controls button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+.modal-zoom-controls button.active {
+  background-color: #3498db;
+  border-color: #3498db;
+}
+/* --- Loading Screen Styles --- */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f4f6f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+  visibility: visible;
+  opacity: 1;
+}
+
+#loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Kontainer untuk loader logo */
+.logo-loader {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+/* Bingkai statis warna-warni */
+.logo-loader::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    #f28705,
+    #caf272,
+    #d6f299,
+    #e3f2c2,
+    #f2f2f2,
+    #f28705
+  );
+  -webkit-mask-image: radial-gradient(transparent 78%, black 79%);
+  mask-image: radial-gradient(transparent 78%, black 79%);
+}
+
+/* Pengaturan posisi dan animasi warna untuk SVG */
+.logo-loader .logo-svg {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: change-logo-color 5s ease-in-out infinite;
+}
+
+/* Animasi untuk mengubah warna SVG */
+@keyframes change-logo-color {
+  0%,
+  100% {
+    fill: #f2f2f2;
+  }
+  20% {
+    fill: #caf272;
+  }
+  40% {
+    fill: #d6f299;
+  }
+  60% {
+    fill: #e3f2c2;
+  }
+  80% {
+    fill: #f28705;
+  }
+}
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f4f6f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+  visibility: visible;
+  opacity: 1;
+}
+
+#loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Kontainer untuk loader logo */
+.logo-loader {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+/* Bingkai statis warna-warni */
+.logo-loader::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    #f28705,
+    #caf272,
+    #d6f299,
+    #e3f2c2,
+    #f2f2f2,
+    #f28705
+  );
+  -webkit-mask-image: radial-gradient(transparent 78%, black 79%);
+  mask-image: radial-gradient(transparent 78%, black 79%);
+}
+
+/* Pengaturan posisi dan animasi warna untuk SVG */
+.logo-loader .logo-svg {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: change-logo-color 5s ease-in-out infinite;
+}
+
+/* Animasi untuk mengubah warna SVG */
+@keyframes change-logo-color {
+  0%,
+  100% {
+    fill: #f2f2f2;
+  }
+  20% {
+    fill: #caf272;
+  }
+  40% {
+    fill: #d6f299;
+  }
+  60% {
+    fill: #e3f2c2;
+  }
+  80% {
+    fill: #f28705;
+  }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  #Process .feature-image {
+    position: static;
+    margin-bottom: 2rem;
+    height: auto;
+    max-height: 450px;
+  }
+  #Process
+    .feature-item:nth-child(even)
+    .grid-container
+    > .feature-image-wrapper {
+    order: 0;
+  }
+}
+@media (max-width: 768px) {
+  #home h1 {
+    font-size: 2.5rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+}
