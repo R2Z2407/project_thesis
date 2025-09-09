@@ -1,7 +1,20 @@
 // Wait for the entire page (including images) to load
 $(window).on("load", function () {
-  // Hide the loading screen
-  $("#loading-overlay").addClass("hidden");
+  const loadingOverlay = $("#loading-overlay");
+
+  // Tambahkan kelas 'hidden' untuk memulai transisi fade-out
+  loadingOverlay.addClass("hidden");
+
+  // Gunakan event listener 'transitionend' untuk mendeteksi kapan transisi selesai
+  loadingOverlay.on("transitionend", function () {
+    // Tampilkan konten utama
+    $("#main-content").addClass("visible");
+    // Tampilkan kembali scrollbar
+    $("body").css("overflow", "auto");
+
+    // Hentikan animasi agar tidak membebani browser setelah tidak terlihat
+    $("#wipe-rect-stroke, #wipe-rect-fill").css("animation", "none");
+  });
 });
 
 // Run scripts after the DOM is ready
@@ -163,11 +176,9 @@ $(document).ready(function () {
   let translateY = 0;
   let isPanning = false;
   let startX, startY;
-  let activeTool = "zoom-in";
-  let lastClickedImage = null; // Untuk menyimpan referensi gambar yang diklik
+  let activeTool = "zoom-in"; // Default tool
 
   function updateTransform() {
-    // Hanya update transform untuk zoom dan pan, bukan posisi
     $modalImage.css(
       "transform",
       `translate(${translateX}px, ${translateY}px) scale(${currentScale})`
@@ -176,83 +187,49 @@ $(document).ready(function () {
 
   function setActiveTool(tool) {
     activeTool = tool;
+    // Update button visual state
     $(".modal-zoom-controls button").removeClass("active");
     $(`#${tool}-btn`).addClass("active");
+
+    // Update cursor
     $modal.removeClass(
       "cursor-grab cursor-grabbing cursor-zoom-in cursor-zoom-out"
     );
-    if (tool === "grab") $modal.addClass("cursor-grab");
-    else if (tool === "zoom-in") $modal.addClass("cursor-zoom-in");
-    else if (tool === "zoom-out") $modal.addClass("cursor-zoom-out");
+    if (tool === "grab") {
+      $modal.addClass("cursor-grab");
+    } else if (tool === "zoom-in") {
+      $modal.addClass("cursor-zoom-in");
+    } else if (tool === "zoom-out") {
+      $modal.addClass("cursor-zoom-out");
+    }
   }
 
   // 1. Open Modal
   $("main").on("click", "img", function () {
-    lastClickedImage = this; // Simpan elemen gambar yang diklik
-    const rect = lastClickedImage.getBoundingClientRect(); // Dapatkan posisi & ukuran gambar sumber
-    const imgSrc = $(lastClickedImage).attr("src");
+    const imgSrc = $(this).attr("src");
 
-    // Reset state
+    // Reset state for new image
     currentScale = 1.0;
     translateX = 0;
     translateY = 0;
-    $modalImage.css("transform", "translate(0, 0) scale(1)"); // Hapus transform lama
+    updateTransform();
 
-    // 1a. Set gambar modal ke posisi & ukuran gambar sumber (sebelum terlihat)
-    $modalImage.attr("src", imgSrc).css({
-      top: `${rect.top}px`,
-      left: `${rect.left}px`,
-      width: `${rect.width}px`,
-      height: `${rect.height}px`,
-    });
-
-    // 1b. Tampilkan overlay latar belakang
+    $modalImage.attr("src", imgSrc);
     $modal.addClass("visible");
     $("body").addClass("scroll-lock");
 
-    // 1c. Setelah delay singkat, animasikan gambar ke tengah layar
-    setTimeout(() => {
-      // Hitung ukuran akhir gambar (menjaga aspek rasio)
-      const aspectRatio = rect.width / rect.height;
-      const finalWidth = Math.min(
-        window.innerWidth * 0.9,
-        lastClickedImage.naturalWidth
-      );
-      const finalHeight = finalWidth / aspectRatio;
-
-      $modalImage.css({
-        top: `50%`,
-        left: `50%`,
-        width: `${finalWidth}px`,
-        height: `${finalHeight}px`,
-        transform: "translate(-50%, -50%) scale(1)", // Center & reset scale
-      });
-    }, 50); // Delay kecil agar transisi CSS terpicu
-
+    // Set default tool to zoom-in
     setActiveTool("zoom-in");
   });
 
   // 2. Close Modal
   function closeModal() {
-    if (!lastClickedImage) return;
-
-    const rect = lastClickedImage.getBoundingClientRect(); // Dapatkan posisi terbaru (jika user scroll)
-
-    // Animasikan gambar kembali ke posisi & ukuran aslinya
-    $modalImage.css({
-      top: `${rect.top}px`,
-      left: `${rect.left}px`,
-      width: `${rect.width}px`,
-      height: `${rect.height}px`,
-      transform: "translate(0, 0) scale(1)", // Hapus centering & reset scale
-    });
-
     $modal.removeClass("visible");
     $("body").removeClass("scroll-lock");
   }
   $(".modal-close").on("click", closeModal);
 
-  // 3. Tool selection (tidak berubah)
+  // 3. Tool selection
   $("#zoom-in-btn").on("click", function (e) {
     e.stopPropagation();
     setActiveTool("zoom-in");
@@ -266,23 +243,24 @@ $(document).ready(function () {
     setActiveTool("grab");
   });
 
-  // 4. Image click action (tidak berubah)
+  // 4. Image click action based on active tool
   $modalImage.on("click", function (e) {
     e.stopPropagation();
     if (activeTool === "zoom-in") {
       currentScale += 0.4;
+      updateTransform();
     } else if (activeTool === "zoom-out") {
-      currentScale = Math.max(1.0, currentScale - 0.4); // Tidak bisa lebih kecil dari 1
+      currentScale -= 0.4;
+      if (currentScale < 1.0) {
+        currentScale = 1.0;
+        translateX = 0;
+        translateY = 0;
+      }
+      updateTransform();
     }
-    // Jika kembali ke scale 1, reset posisi geser
-    if (currentScale === 1.0) {
-      translateX = 0;
-      translateY = 0;
-    }
-    updateTransform();
   });
 
-  // 5. Panning (Grab/Drag) Logic (tidak berubah)
+  // 5. Panning (Grab/Drag) Logic
   $modalImage.on("mousedown", function (e) {
     if (activeTool === "grab" && currentScale > 1.0) {
       e.preventDefault();
@@ -292,6 +270,7 @@ $(document).ready(function () {
       $modal.removeClass("cursor-grab").addClass("cursor-grabbing");
     }
   });
+
   $(window).on("mousemove", function (e) {
     if (isPanning) {
       e.preventDefault();
@@ -300,6 +279,7 @@ $(document).ready(function () {
       updateTransform();
     }
   });
+
   $(window).on("mouseup", function (e) {
     if (isPanning) {
       isPanning = false;

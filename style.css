@@ -605,156 +605,97 @@ main img:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #f4f6f7;
+  background-color: #caf272; /* Latar belakang gelap */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  transition: opacity 0.7s ease, visibility 0.7s ease;
+  z-index: 100;
+  transition: opacity 0.75s ease, visibility 0.75s ease;
   visibility: visible;
   opacity: 1;
 }
 
+/* Kelas untuk menyembunyikan overlay setelah loading */
 #loading-overlay.hidden {
   opacity: 0;
   visibility: hidden;
 }
 
-/* Kontainer untuk loader logo */
-.logo-loader {
-  width: 120px;
-  height: 120px;
+/* --- Kontainer Animasi --- */
+#gta-loader {
   position: relative;
-}
-
-/* Bingkai statis warna-warni */
-.logo-loader::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: conic-gradient(
-    #f28705,
-    #caf272,
-    #d6f299,
-    #e3f2c2,
-    #f2f2f2,
-    #f28705
-  );
-  -webkit-mask-image: radial-gradient(transparent 78%, black 79%);
-  mask-image: radial-gradient(transparent 78%, black 79%);
-}
-
-/* Pengaturan posisi dan animasi warna untuk SVG */
-.logo-loader .logo-svg {
-  width: 80%;
-  height: 80%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: change-logo-color 5s ease-in-out infinite;
-}
-
-/* Animasi untuk mengubah warna SVG */
-@keyframes change-logo-color {
-  0%,
-  100% {
-    fill: #f2f2f2;
-  }
-  20% {
-    fill: #caf272;
-  }
-  40% {
-    fill: #d6f299;
-  }
-  60% {
-    fill: #e3f2c2;
-  }
-  80% {
-    fill: #f28705;
-  }
-}
-#loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #f4f6f7;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  transition: opacity 0.7s ease, visibility 0.7s ease;
-  visibility: visible;
-  opacity: 1;
 }
 
-#loading-overlay.hidden {
-  opacity: 0;
-  visibility: hidden;
+/* --- Gaya untuk SVG --- */
+#gta-loader svg {
+  width: 150px;
+  height: auto;
 }
 
-/* Kontainer untuk loader logo */
-.logo-loader {
-  width: 120px;
-  height: 120px;
-  position: relative;
+/* --- Bagian Isi (Path) --- */
+.logo-path-fill {
+  fill: #f28705; /* Warna oranye untuk isi logo */
 }
 
-/* Bingkai statis warna-warni */
-.logo-loader::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: conic-gradient(
-    #f28705,
-    #caf272,
-    #d6f299,
-    #e3f2c2,
-    #f2f2f2,
-    #f28705
-  );
-  -webkit-mask-image: radial-gradient(transparent 78%, black 79%);
-  mask-image: radial-gradient(transparent 78%, black 79%);
+/* --- Bagian Garis Tepi (Stroke) --- */
+.logo-path-stroke {
+  fill: none;
+  stroke: #e3f2c2; /* Warna hijau untuk garis tepi */
+  stroke-width: 4px; /* Lebar garis tepi */
 }
 
-/* Pengaturan posisi dan animasi warna untuk SVG */
-.logo-loader .logo-svg {
-  width: 80%;
-  height: 80%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: change-logo-color 5s ease-in-out infinite;
+/* Menerapkan efek "wipe" secara terpisah */
+#stroke-group {
+  clip-path: url(#wipe-clip-stroke);
+}
+#fill-group {
+  clip-path: url(#wipe-clip-fill);
 }
 
-/* Animasi untuk mengubah warna SVG */
-@keyframes change-logo-color {
-  0%,
-  100% {
-    fill: #f2f2f2;
-  }
-  20% {
-    fill: #caf272;
+/* Animasi untuk border/garis tepi */
+#wipe-rect-stroke {
+  animation: stroke-wipe 4s ease-in-out infinite;
+}
+
+/* Animasi untuk isian path */
+#wipe-rect-fill {
+  animation: fill-wipe 4s ease-in-out infinite;
+}
+
+/* --- KEYFRAMES ANIMASI --- */
+
+/* Animasi HANYA untuk garis tepi (stroke) */
+@keyframes stroke-wipe {
+  0% {
+    height: 0;
   }
   40% {
-    fill: #d6f299;
+    /* Selesai dalam 40% dari total durasi */
+    height: 206px;
   }
-  60% {
-    fill: #e3f2c2;
+  100% {
+    /* Tetap terlihat sampai akhir loop */
+    height: 206px;
+  }
+}
+
+/* Animasi HANYA untuk isian (fill) */
+@keyframes fill-wipe {
+  0%,
+  40% {
+    /* Diam dan tidak terlihat sampai border selesai */
+    height: 0;
   }
   80% {
-    fill: #f28705;
+    /* Mulai mengisi setelah border selesai */
+    height: 206px;
+  }
+  100% {
+    /* Tetap terisi penuh */
+    height: 206px;
   }
 }
 
