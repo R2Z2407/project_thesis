@@ -36,7 +36,6 @@ $(document).ready(function () {
   $(window).on("scroll", revealOnScroll);
   revealOnScroll();
 
-  // --- Script for background zoom effect on scroll ---
   // --- Script for background zoom effect on scroll (RESPONSIVE) ---
   function handleBackgroundZoom() {
     // Cek lebar window
@@ -125,6 +124,9 @@ $(document).ready(function () {
 
   // --- SCRIPT FOR STICKY IMAGE & AUTOMATIC CHANGE ON SCROLL ---
   function setupScrollObserver($featureItem) {
+    // Hanya jalankan jika lebar layar > 992px
+    if ($(window).width() <= 992) return;
+
     const $components = $featureItem.find(".process-component");
     const $image = $featureItem.find(".feature-image");
     const observerOptions = {
@@ -169,22 +171,60 @@ $(document).ready(function () {
     $moreContent.slideToggle(400, function () {
       if ($moreContent.is(":visible")) {
         $btn.html('Sembunyikan <i class="fas fa-chevron-up"></i>');
-        const contentHeight = $contentWrapper.outerHeight();
-        $imageWrapper.css("height", contentHeight + "px");
-        setupScrollObserver($featureItem);
+
+        // Hanya atur tinggi jika lebar layar > 992px
+        if ($(window).width() > 992) {
+          const contentHeight = $contentWrapper.outerHeight();
+          $imageWrapper.css("height", contentHeight + "px");
+          setupScrollObserver($featureItem);
+        }
       } else {
         $btn.html('Selengkapnya <i class="fas fa-chevron-down"></i>');
         $imageWrapper.css("height", "auto");
+
+        // Hanya hentikan observer jika lebar layar > 992px
+        if ($(window).width() > 992) {
+          const observer = $featureItem.data("observer");
+          if (observer) {
+            observer.disconnect();
+            $featureItem.removeData("observer");
+          }
+          $image.attr("src", $image.data("original-src"));
+          $featureItem.find(".process-component").removeClass("active");
+        }
+      }
+    });
+  });
+
+  // Tambahkan penanganan resize window untuk memastikan perilaku benar saat resize
+  $(window).on("resize", function () {
+    $(".feature-item").each(function () {
+      const $featureItem = $(this);
+
+      // Jika lebar layar ≤ 992px, pastikan observer dinonaktifkan
+      if ($(window).width() <= 992) {
         const observer = $featureItem.data("observer");
         if (observer) {
           observer.disconnect();
           $featureItem.removeData("observer");
         }
-        $image.attr("src", $image.data("original-src"));
+        $featureItem
+          .find(".feature-image")
+          .attr(
+            "src",
+            $featureItem.find(".feature-image").data("original-src")
+          );
         $featureItem.find(".process-component").removeClass("active");
+        $featureItem.find(".feature-image-wrapper").css("height", "auto");
+      }
+      // Jika lebar layar > 992px dan konten terbuka, pastikan observer diatur ulang
+      else if ($featureItem.find(".more-content").is(":visible")) {
+        setupScrollObserver($featureItem);
       }
     });
   });
+
+  $(window).on("resize", setupScrollObserver);
 
   // --- SCRIPT FOR IMAGE POP-UP MODAL (ADVANCED) ---
   const $modal = $("#image-modal");

@@ -67,6 +67,13 @@ img {
 section:not(:first-child) p {
   text-align: justify;
 }
+.mobile {
+  display: none;
+}
+.formula-title,
+.katex-display {
+  display: none;
+}
 /* --- Section Styling --- */
 #home,
 #result {
@@ -84,7 +91,8 @@ section:not(:first-child) p {
   background-size: 120%;
   background-image: url("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop");
 }
-#home::before {
+#home::before,
+#result::before {
   content: "";
   position: absolute;
   top: 0;
@@ -171,6 +179,7 @@ section:not(:first-child) p {
 #result {
   background-size: 100%;
   background-image: url("https://images.unsplash.com/photo-1621947081720-86970823b77a?q=80&w=1932&auto=format&fit=crop");
+  background-color: rgba(201, 242, 113, 0.786);
 }
 #result .content-box {
   background-color: rgba(255, 255, 255, 0.8);
@@ -704,8 +713,47 @@ main img:hover {
 
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
+  .formula-title,
+  .katex-display {
+    display: block;
+  }
+
+  .formula-container {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .formula-title {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+  }
+
+  .katex-display {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.05em;
+  }
+  .mobile {
+    display: block; /* Gunakan block untuk gambar */
+    width: 100%; /* Atur lebar penuh */
+    height: auto; /* Pertahankan rasio aspek */
+    margin-bottom: 2vh;
+    visibility: visible; /* Pastikan terlihat */
+  }
+  #home,
+  #result {
+    background-size: cover;
+  }
   .grid-container {
     grid-template-columns: 1fr;
+  }
+  section {
+    overflow: hidden;
   }
   #Process .feature-image {
     position: static;

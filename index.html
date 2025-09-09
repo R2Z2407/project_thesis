@@ -14,6 +14,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
+    <!-- KaTeX CSS -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -203,21 +210,78 @@
                 <div class="more-content">
                   <div
                     class="process-component"
-                    data-img-src="assets/img/Real_RandomForest_model.jpg"
+                    data-img-src="assets/img/Skripsi_Rijal-R_04_page47_image1.jpg"
                   >
+                    <img
+                      class="mobile"
+                      src="assets/img/Skripsi_Rijal-R_04_page47_image1.jpg"
+                    />
                     <h4>Transformasi Data</h4>
+                    <p>
+                      Tahap pertama adalah transformasi data, yang bertujuan
+                      untuk menyesuaikan skala nilai-nilai fitur agar berada
+                      dalam rentang yang sama. Dalam penelitian ini, digunakan
+                      robust scaler sebagai teknik transformasi data. Robust
+                      scaler berfungsi untuk penskalaan fitur guna mengatasi
+                      outlier tanpa menghilangkannya, dengan menggunakan median
+                      dan interquartile range (IQR). Teknik ini mempertahankan
+                      outlier tanpa perlu menghilangkannya, sehingga informasi
+                      penting tetap terjaga dalam data. Rentang yang diperoleh
+                      yaitu dari -2 hingga 6
+                    </p>
                   </div>
                   <div
                     class="process-component"
-                    data-img-src="assets/img/Real_RandomForest_model.jpg"
+                    data-img-src="assets/img/Skripsi_Rijal-R_04_page47_image2.jpg"
                   >
+                    <img
+                      class="mobile"
+                      src="assets/img/Skripsi_Rijal-R_04_page47_image2.jpg"
+                    />
                     <h4>Pembagian Data</h4>
+                    <p>
+                      Setelah data melalui proses normalisasi, data tersebut
+                      dibagi menjadi dua bagian, yaitu X dan y. Data X merupakan
+                      fitur-fitur yang merepresentasikan target dan dijadikan
+                      output model. Fitur-fitur dalam data X meliputi air
+                      temperature, process temperature, torque, dan rotational
+                      speed. Sementara itu, data y berfungsi sebagai target
+                      kelas dalam klasifikasi, yang berisi kategori-kategori
+                      pada variabel yaitu normal dan anomali. Kemudian dilakukan
+                      pembagian porsi data latih, data validasi, dan data
+                      pengujian. Pembagian data tersebut terinci sebagai
+                      berikut: 70% data latih; 15% data validasi; dan 15% data
+                      uji.
+                    </p>
                   </div>
                   <div
                     class="process-component"
-                    data-img-src="assets/img/Real_RandomForest_model.jpg"
+                    data-img-src="assets/img/Skripsi_Rijal-R_04_page48_image1.png"
                   >
+                    <img
+                      class="mobile"
+                      src="assets/img/Skripsi_Rijal-R_04_page48_image1.png"
+                    />
                     <h4>Penyeimbangan Data</h4>
+                    <p>
+                      Pada tahap ini, dilakukan penyeimbangan data untuk
+                      mengatasi permasalahan ketidakseimbangan kelas pada data
+                      pelatihan dan validasi. Data 40 pelatihan dan validasi
+                      yang digunakan dalam penelitian ini memiliki
+                      ketidakseimbangan antara kelas mayoritas (dengan target 0)
+                      dan kelas minoritas (dengan target 1). Untuk mengatasi hal
+                      tersebut, digunakan teknik oversampling pada kelas
+                      minoritas. SMOTE dipilih menjadi teknik oversampling
+                      karena menciptakan data sintetik baru dengan interpolasi
+                      antara contoh-contoh yang ada, sehingga menambah variasi
+                      pada kelas minoritas. Dengan menerapkan SMOTE, jumlah data
+                      pada kelas minoritas menjadi sebanding dengan jumlah data
+                      pada kelas mayoritas. Hasil dari proses ini adalah data
+                      pelatihan yang lebih seimbang antara kelas mayoritas dan
+                      minoritas, yang diharapkan dapat meningkatkan performa
+                      model dalam mengklasifikasikan kedua kelas dengan lebih
+                      baik.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -253,6 +317,10 @@
                     class="process-component"
                     data-img-src="assets/img/Real_RandomForest_model.jpg"
                   >
+                    <img
+                      class="mobile"
+                      src="assets/img/Real_RandomForest_model.jpg"
+                    />
                     <h4>Random Forest</h4>
                     <p>
                       <i>Random Forest</i> adalah sebuah metode algoritma ML
@@ -278,6 +346,10 @@
                     class="process-component"
                     data-img-src="assets/img/Real_XGboost_model.jpg"
                   >
+                    <img
+                      class="mobile"
+                      src="assets/img/Real_XGboost_model.jpg"
+                    />
                     <h4>Extreme Gradient Boosting</h4>
                     <p>
                       <i>Extreme Gradient Boosting</i> (Xgboost) adalah sebuah
@@ -306,6 +378,7 @@
                     class="process-component"
                     data-img-src="assets/img/Real_SVM_model.jpg"
                   >
+                    <img class="mobile" src="assets/img/Real_SVM_model.jpg" />
                     <h4>Support Vector Machine</h4>
                     <p>
                       <i>Support Vector Machine</i> (SVM) adalah sebuah metode
@@ -331,6 +404,7 @@
                     class="process-component"
                     data-img-src="assets/img/Real_ANN_model.jpg"
                   >
+                    <img class="mobile" src="assets/img/Real_ANN_model.jpg" />
                     <h4>Artificial Neural Network</h4>
                     <p>
                       <i>Artificial Neural Network</i> (ANN) adalah model
@@ -400,6 +474,8 @@
                       <i>precision</i>, semakin sedikit prediksi positif yang
                       salah.
                     </p>
+                    $$\text{Precision} = \frac{\text{TP}}{\text{TP} +
+                    \text{FP}}$$
                   </div>
 
                   <div
@@ -413,6 +489,7 @@
                       <i>recall</i> tinggi berarti model jarang melewatkan kasus
                       positif.
                     </p>
+                    $$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}$$
                   </div>
 
                   <div
@@ -430,12 +507,15 @@
                       baik daripada akurasi biasa karena tidak dipengaruhi oleh
                       mayoritas kelas negatif.
                     </p>
+                    $$\text{F1-Score} =
+                    2\times\frac{\text{Precision}\times\text{Recall}}{\text{Precision}+\text{Recall}}$$
                   </div>
 
                   <div
                     class="process-component"
                     data-img-src="assets/img/PR_curve.jpg"
                   >
+                    <img class="mobile" src="assets/img/PR_curve.jpg" />
                     <h4>Precision-Recall Curve</h4>
                     <p>
                       <i>Precision-Recall Curve</i> (PRC) adalah grafik yang
@@ -462,6 +542,9 @@
                       tangguh terhadap ketidakseimbangan kelas dan memberikan
                       gambaran seimbang tentang performa model.
                     </p>
+                    $$\text{MCC} = \frac{\text{TP} \times \text{TN} - \text{FP}
+                    \times \text{FN}}{\sqrt{(\text{TP} + \text{FP})(\text{TP} +
+                    \text{FN})(\text{TN} + \text{FP})(\text{TN} + \text{FN})}}$$
                   </div>
 
                   <div
@@ -474,6 +557,9 @@
                       <i>recall</i> (sensitivitas) dan spesifisitas...
                       (deskripsi lengkap)
                     </p>
+                    $$\text{G-Mean} = \sqrt{\text{Precision} \times
+                    \text{Recall}} = \sqrt{\frac{\text{TP}}{\text{TP} +
+                    \text{FP}} \times \frac{\text{TP}}{\text{TP} + \text{FN}}}$$
                   </div>
                 </div>
               </div>
