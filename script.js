@@ -37,25 +37,45 @@ $(document).ready(function () {
   revealOnScroll();
 
   // --- Script for background zoom effect on scroll ---
-  $(window).on("scroll", function () {
-    const scrollTop = $(window).scrollTop();
-    let homeScale = 120 - scrollTop * 0.03;
-    homeScale = Math.max(100, homeScale);
-    $("#home").css("background-size", homeScale + "%");
-    const resultSection = $("#result");
-    if (resultSection.length) {
-      const resultTop = resultSection.offset().top;
-      const windowHeight = $(window).height();
-      if (scrollTop + windowHeight > resultTop) {
-        const scrollInside = scrollTop + windowHeight - resultTop;
-        let resultScale = 100 + scrollInside * 0.03;
-        resultScale = Math.min(120, resultScale);
-        resultSection.css("background-size", resultScale + "%");
-      } else {
-        resultSection.css("background-size", "100%");
-      }
+  // --- Script for background zoom effect on scroll (RESPONSIVE) ---
+  function handleBackgroundZoom() {
+    // Cek lebar window
+    if ($(window).width() > 992) {
+      // Jika lebih lebar dari 992px, aktifkan event listener untuk scroll
+      $(window).on("scroll.zoomEffect", function () {
+        const scrollTop = $(window).scrollTop();
+        let homeScale = 120 - scrollTop * 0.03;
+        homeScale = Math.max(100, homeScale);
+        $("#home").css("background-size", homeScale + "%");
+
+        const resultSection = $("#result");
+        if (resultSection.length) {
+          const resultTop = resultSection.offset().top;
+          const windowHeight = $(window).height();
+          if (scrollTop + windowHeight > resultTop) {
+            const scrollInside = scrollTop + windowHeight - resultTop;
+            let resultScale = 100 + scrollInside * 0.03;
+            resultScale = Math.min(120, resultScale);
+            resultSection.css("background-size", resultScale + "%");
+          } else {
+            resultSection.css("background-size", "100%");
+          }
+        }
+      });
+    } else {
+      // Jika 992px atau lebih sempit, matikan event listener scroll
+      $(window).off("scroll.zoomEffect");
+      // Dan reset style background-size agar kembali ke default CSS
+      $("#home").css("background-size", "");
+      $("#result").css("background-size", "");
     }
-  });
+  }
+
+  // Jalankan fungsi saat halaman pertama kali dimuat
+  handleBackgroundZoom();
+
+  // Jalankan kembali fungsi setiap kali ukuran window berubah
+  $(window).on("resize", handleBackgroundZoom);
 
   // --- Script for floating navigation menu ---
   $("#nav-toggle-btn").on("click", function () {

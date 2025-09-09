@@ -7,8 +7,8 @@
 }
 body {
   font-family: "Inter", sans-serif;
-  background-color: #f4f6f7;
-  color: #1c2833;
+  background-color: #e3f2c2;
+  color: black;
   line-height: 1.6;
 }
 body.scroll-lock {
@@ -31,7 +31,7 @@ h3,
 h4 {
   line-height: 1.2;
   font-weight: 800;
-  color: #212f3d;
+  color: black;
 }
 /* --- Reusable Components --- */
 .grid-container {
@@ -55,7 +55,7 @@ img {
   font-weight: 700;
   text-decoration: none;
   color: white;
-  background-color: #2a4466;
+  background-color: #f28705;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -91,7 +91,7 @@ section:not(:first-child) p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(42, 68, 102, 0.5);
+  background-color: rgba(201, 242, 113, 0.786);
   z-index: 1;
 }
 #home .content {
@@ -100,18 +100,18 @@ section:not(:first-child) p {
   z-index: 2;
 }
 #home h1 {
-  color: #ffffff;
+  color: black;
   font-size: 3rem;
 }
 #home p {
   font-size: 1.25rem;
   max-width: 48rem;
   margin: 1rem auto 2rem;
-  color: #eaecee;
+  color: black;
 }
 #home .btn {
   background-color: white;
-  color: #2a4466;
+  color: black;
   animation: pulse 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 .section-intro {
@@ -119,13 +119,14 @@ section:not(:first-child) p {
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
+  color: #f28705;
 }
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
 }
 #challenge {
-  background-color: #ffffff;
+  background-color: #e3f2c2;
 }
 .content-wrapper {
   display: flex;
@@ -161,7 +162,7 @@ section:not(:first-child) p {
   z-index: 5;
 }
 #solution {
-  background-color: #f4f6f7;
+  background-color: rgba(201, 242, 113, 1);
 }
 #solution .intro-text {
   max-width: 42rem;
@@ -186,7 +187,7 @@ section:not(:first-child) p {
 
 /* --- Styling untuk Bagian Process --- */
 #Process {
-  background-color: white;
+  background-color: rgba(213, 242, 152, 1);
 }
 #Process .feature-item {
   margin-bottom: 6rem;
@@ -229,8 +230,8 @@ section:not(:first-child) p {
 }
 #Process .read-more-btn {
   background-color: transparent;
-  color: #2a4466;
-  border: 1px solid #2a4466;
+  color: black;
+  border: 1px solid black;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
   cursor: pointer;
@@ -239,8 +240,8 @@ section:not(:first-child) p {
   transition: all 0.3s ease;
 }
 #Process .read-more-btn:hover {
-  background-color: #2a4466;
-  color: white;
+  background-color: black;
+  color: #e3f2c2;
 }
 #Process .more-content {
   display: none;
@@ -308,8 +309,10 @@ section:not(:first-child) p {
   pointer-events: all;
   transition: all 0.2s ease;
 }
+
 .scroller-nav button:hover {
-  background-color: white;
+  background-color: #caf272;
+  border: black;
   transform: scale(1.1);
 }
 .scroller-dots {
@@ -333,7 +336,7 @@ section:not(:first-child) p {
 }
 /* --- Footer --- */
 footer {
-  background-color: white;
+  background-color: #e3f2c2;
   padding: 2.5rem 0;
   border-top: 1px solid #e5e7eb;
   color: #6b7281;
@@ -350,7 +353,7 @@ footer .social-links a {
   transition: color 0.3s ease;
 }
 footer .social-links a:hover {
-  color: #2a4466;
+  color: #f28705;
 }
 /* --- Animations --- */
 .reveal {
@@ -447,7 +450,7 @@ footer .social-links a:hover {
   position: absolute;
   bottom: calc(100% + 8px);
   left: 50%;
-  background-color: #34495e;
+  background-color: #f28705;
   color: white;
   padding: 5px 10px;
   border-radius: 6px;
@@ -467,7 +470,7 @@ footer .social-links a:hover {
 #nav-toggle-btn {
   width: 4rem;
   height: 4rem;
-  background-color: #2a4466;
+  background-color: #f28705;
   color: white;
   border-radius: 50%;
   display: flex;
